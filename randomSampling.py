@@ -34,17 +34,6 @@ for i in range(1,19):
 
 
 
-        #for samp in records.seq:
-            #if records.id == "00P01Kr{0:02d}".format(i):
-                #handle = random.sample(samp, 1)
-                #rand_seq = SeqIO.write(ran_samp, random_fasta, "fasta")
-            #else:
-                #print("Yell at Brittany!  But not Taylor, Taylor is great.")
-
-
-
-
-
 
 
 
