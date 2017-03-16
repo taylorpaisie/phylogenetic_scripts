@@ -7,8 +7,8 @@ and sample for per tissue per time point """
 
 
 
-import random, sys
-from Bio import SeqIO, SeqRecord
+import random
+from Bio import SeqIO
 
 # loading the fasta file and creating output fasta file
 in_fasta = "P01.fas"
@@ -21,16 +21,26 @@ random_fasta = "P01_random.fasta"
 #the random sample is then put into a new fasta file
 
 for i in range(1,19):
-    for records in list(SeqIO.parse(in_fasta, "fasta")):
-        for samp in records.seq:
-            if records. == "00P01Kr{0:02d}".format(i):
-                ran_samp = random.sample(samp, 1)
+    with open(in_fasta, "r") as f_in:
+        for record in SeqIO.parse(f_in, "fasta"):
+            if record.id in record == "00P01Kr{0:02d}".format(i):
+                subsamp = random.sample(1)
                 rand_seqs = open(random_fasta, "w")
-                SeqIO.write(samp, rand_seqs, "fasta")
+                SeqIO.write(subsamp, rand_seqs, "fasta")
             else:
                 print("Yell at Brittany!  But not Taylor, Taylor is great.")
 
-rand_seqs.close()
+
+
+
+
+        #for samp in records.seq:
+            #if records.id == "00P01Kr{0:02d}".format(i):
+                #handle = random.sample(samp, 1)
+                #rand_seq = SeqIO.write(ran_samp, random_fasta, "fasta")
+            #else:
+                #print("Yell at Brittany!  But not Taylor, Taylor is great.")
+
 
 
 
