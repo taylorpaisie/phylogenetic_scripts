@@ -9,7 +9,7 @@ from Bio import SeqIO
 
 # loading the fasta file and creating output fasta file
 if len(sys.argv) < 3:
-	print("ERROR: missing required arguments (input fasta, output fasta)")
+	print("ERROR: missing required arguments (input fasta, output fasta). RESISTANCE IS FUTILE.")
 	sys.exit(1)
 
 in_fasta = sys.argv[1]
@@ -17,6 +17,7 @@ random_fasta = sys.argv[2]
 
 print("HOW MANY RANDOMLY SELECTED SAMPLES WOULD YOU LIKE HUMAN?")
 num_samples = int(raw_input(">"))
+print("I'm sorry, Dave. I'm afraid I can't do that. Shut up HAL. Just kidding I am.")
 
 #rand_seqs = open(random_fasta, "w")
 
@@ -47,7 +48,7 @@ with open(in_fasta, "r") as f_in:
 random_records = []
 for prefix, records in all_records.iteritems():
 	if num_samples > len(records):
-		print("WARN: only %i samples in group %s, selecting all" % (len(records), prefix))
+		print("WARN: only %i samples in group %s, selecting all." % (len(records), prefix))
 		random_records.extend(records)
 	else:
 		for i in range(1, num_samples + 1):
