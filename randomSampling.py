@@ -49,6 +49,7 @@ random_records = []
 for prefix, records in all_records.iteritems():
 	if num_samples > len(records):
 		print("WARN: only %i samples in group %s, selecting all." % (len(records), prefix))
+        print("")
 		random_records.extend(records)
 	else:
 		for i in range(1, num_samples + 1):
