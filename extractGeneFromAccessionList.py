@@ -1,18 +1,20 @@
 # python script by Taylor Paisie
+#must have biopython install on computer
 
 import sys, os
 from Bio import SeqIO, Entrez
 from Bio.Seq import Seq
 from Bio.SeqFeature import SeqFeature
+from urllib2 import HTTPError
 
 print("NCBI needs your email.")
-Entrez.email = input(">")
+Entrez.email = raw_input(">")
 print("Now the governement has your email address. Good luck hiding that internet history now.  Muahaha. ")
 
 
 # this is your text file with the GB accession numbers
 #print("Input your text file with the GB accession numbers")
-id_list = open(sys.argv[1]) 
+id_list = open(sys.argv[1], 'r') 
 
 accessions = []
 for line in id_list:

@@ -8,7 +8,7 @@ from Bio import SeqIO, Entrez
 
 print("NCBI needs your email.")
 Entrez.email = raw_input(str(">"))
-print("Now the governement has your email address. Good luck hiding that internet history now.  Muahaha. ")
+print("Now the governement has your email address. Muahaha.")
 
 
 # this is your text file with the GB accession numbers
