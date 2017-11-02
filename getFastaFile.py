@@ -4,7 +4,9 @@ from Bio import Entrez, SeqIO
 import sys
 
 
-Entrez.email = "tpaisie@ufl.edu"
+print("NCBI needs your email.")
+Entrez.email = input(str(">"))
+print("Now the governement has your email address. Muahaha.")
 
 id_list = open(sys.argv[1])
 
