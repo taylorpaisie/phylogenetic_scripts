@@ -21,7 +21,7 @@ for line in id_list:
     line = line.rstrip("\n")
     accessions.append(line)
 
-gb_output = open(sys.argv[2] + ".gb", "w")
+gb_output = open(sys.argv[2] + ".txt", "w")
 for gb_num in accessions:
     handle = Entrez.efetch(db="nucleotide", id=gb_num, rettype="gb", retmode="text")
     gb_seqs = SeqIO.parse(handle, "gb")
@@ -32,16 +32,22 @@ gb_output.close()
 
 
 #parses through genbank file and will put product with those labels in a fasta file
-product = sys.argv[3]
-
-
-with open(sys.argv[2] + ".fasta", 'w') as nfh:
-    for rec in SeqIO.parse(sys.argv[2] + ".gb", "genbank"):
-        if rec.features:
-            for feature in rec.features:
-                if feature.type == "CDS" and product in feature.qualifiers['product'][0] :
-                    nfh.write(">%s from %s\n%s\n" % (feature.qualifiers['product'][0],
-                                                     rec.name, feature.location.extract(rec).seq))
+gb_file = open(sys.argv[2] + ".txt", "r")
+#take out accession numbers and collection date in a text file
+# parse genbank file
+save_subtype = open(sys.argv[2] + "_subtype.txt", "w")
+for gb_record in SeqIO.parse(gb_file, "gb"):
+    # now do something with the record
+        save_subtype.write(gb_record.name+"\t"),   # print genbank accession number with no new line
+        for feat in gb_record.features:
+                if feat.type == 'source':
+                        source = gb_record.features[0]
+                        for qualifiers in source.qualifiers:
+                                if qualifiers == 'note':
+                                        subtype = source.qualifiers['note']
+                                        save_subtype.write(subtype[0] + "\n"),  # prints the country with no new line
+save_subtype.close()
+gb_file.close()
 
 
 
